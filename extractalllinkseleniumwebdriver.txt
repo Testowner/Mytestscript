@@ -1,0 +1,71 @@
+
+ 
+import java.util.List;
+  
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.*;
+//import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.WebElement;
+
+ 
+public class Fresh_builders {
+ 
+    public static void main(String[] args) {
+    
+    	     // objects and variables instantiation
+    	              WebDriver driver = new FirefoxDriver();
+    	              String appUrl = "https://www.com/home";
+    	              driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    	           
+    	// launch the firefox browser and open the application url
+    	              driver.get(appUrl);
+    	             // maximize the browser window
+    	              driver.manage().window().maximize();
+    	              // declare and initialize the variable to store the expected title of the webpage.
+    	              
+    	 
+    	// enter a valid username in the textbox
+    	              //WebElement username = driver.findElement(By.id("login_email"));
+    	              WebElement username = driver.findElement(By.id("userInput"));
+    	              username.clear();
+    	              username.sendKeys("admin");
+    	              
+    	// enter a valid password in the password textbox
+    	              WebElement password = driver.findElement(By.id("passwordInput"));
+    	              password.clear();
+    	              password.sendKeys("Qwerty1!");
+    	              	                       
+    	// click on the Sign in button
+    	              WebElement SignInButton = driver.findElement(By.id("login"));
+    	              SignInButton.click();
+             
+        //String underConsTitle = "Under Construction: Builder - Freshbrix";
+          String underConsTitle = "Under Construction: A2Z4SMB";
+          driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+                          
+        List<WebElement> linkElements = driver.findElements(By.tagName("a"));
+        String[] linkTexts = new String[linkElements.size()];
+        int j = 0;
+           
+        //extract the link texts of each link element
+        for (WebElement e : linkElements) {
+            linkTexts[j] = e.getText();
+            j++;
+        }
+         //test each link
+        for (String t : linkTexts) {
+            driver.findElement(By.linkText(t)).click();
+            if (driver.getTitle().equals(underConsTitle)) {
+                System.out.println("\"" + t + "\""
+                        + " is under construction.");
+            } else {
+                System.out.println("\"" + t + "\""
+                        + " is working fine.");
+            }
+            driver.navigate().back();
+            
+        }
+        driver.quit();
+    }
+}

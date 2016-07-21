@@ -20,9 +20,9 @@ public class VidertyTwo {
         WebElement password;
         WebElement login;
         email = driver.findElement(By.name("email"));
-        email.sendKeys("testowner3@gmail.com");
+        email.sendKeys("owfgner3@gmail.com");
         password = driver.findElement(By.name("password"));
-        password.sendKeys("test@123");
+        password.sendKeys("fgdtt@123");
         login = driver.findElement(By.cssSelector("input.btn.btn-primary"));         
         login.click();
         driver.findElement(By.cssSelector("td.text-center > a[title=\"View Properties\"] > span.fa.fa-eye")).click();
@@ -37,7 +37,7 @@ public class VidertyTwo {
         File file = new File("E:\\chromedriver_win32\\chromedriver.exe");
         System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
         driver = new ChromeDriver();
-        driver.get("http://demo.a2z4smb.com:6036/");
+        driver.get("http://aws");
         driver.manage().window().maximize(); 
          }
 

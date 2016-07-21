@@ -1,0 +1,51 @@
+import java.io.File;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterMethod;
+
+
+public class VidertyTwo {
+    public WebDriver driver;
+
+  @Test
+
+  public void main() {
+
+    //create web Object
+        WebElement email;
+        WebElement password;
+        WebElement login;
+        email = driver.findElement(By.name("email"));
+        email.sendKeys("testowner3@gmail.com");
+        password = driver.findElement(By.name("password"));
+        password.sendKeys("test@123");
+        login = driver.findElement(By.cssSelector("input.btn.btn-primary"));         
+        login.click();
+        driver.findElement(By.cssSelector("td.text-center > a[title=\"View Properties\"] > span.fa.fa-eye")).click();
+		driver.findElement(By.cssSelector("span.fa.fa-edit")).click();
+  }
+
+  @BeforeMethod
+
+  public void beforeMethod() {
+
+      //Open the URL in Chrome
+        File file = new File("E:\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
+        driver = new ChromeDriver();
+        driver.get("http://demo.a2z4smb.com:6036/");
+        driver.manage().window().maximize(); 
+         }
+
+  @AfterMethod
+
+  public void afterMethod() {
+    //Close the browser
+      driver.quit();
+    }
+
+}
